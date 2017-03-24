@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">CPSC 365A Course Project</string>
+    <string name="app_name">Stats on Stats</string>
+    <string name="USER_SETTINGS">USER_SETTINGS</string>
+    <string name="USER_NICKNAME">USER_NICKNAME</string>
 </resources>
