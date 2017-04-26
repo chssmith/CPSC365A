@@ -1,3 +1,8 @@
+//  Connor Ricks
+//
+//  Please do not make changes to this activity, or its XML without consulting me on the reason why.
+//
+
 package edu.roanoke.cs.cpsc365a;
 
 import android.content.Intent;
@@ -7,6 +12,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+
 
 public class NicknameActivity extends AppCompatActivity {
 
@@ -28,6 +34,11 @@ public class NicknameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nickname);
+
+        SharedPreferences userPrefs = getSharedPreferences(Cons.USER_SETTINGS, MODE_PRIVATE);
+        if ((userPrefs.getString(Cons.USER_NICKNAME, "") != "")) { //&& (userPrefs.getString(Cons.USER_ID, "") != "")) {
+            proceedToRoomMenu();
+        }
     }
 
     //--------------------------------------------------
@@ -80,12 +91,16 @@ public class NicknameActivity extends AppCompatActivity {
         */
 
         //Get user's preferences.
-        SharedPreferences userPrefs = getSharedPreferences(getResources().getString(R.string.USER_SETTINGS), MODE_PRIVATE);
+        SharedPreferences userPrefs = getSharedPreferences(Cons.USER_SETTINGS, MODE_PRIVATE);
 
         //Save and commit the user's nickname to the shared preferences.
         SharedPreferences.Editor editor = userPrefs.edit();
-        editor.putString(getResources().getString(R.string.USER_NICKNAME), nickname);
+        editor.putString(Cons.USER_NICKNAME, nickname);
         editor.commit();
+
+        //Call
+
+        System.out.println(userPrefs.getString(Cons.USER_NICKNAME, "ERRRRRRRR"));
     }
 
     //  Description:
