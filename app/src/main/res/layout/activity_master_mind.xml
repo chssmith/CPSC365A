@@ -27,14 +27,6 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/pegGuess2"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/peg_blue" />
-
-                <Button
                     android:id="@+id/pegGuess1"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
@@ -43,12 +35,12 @@
                     android:background="@drawable/peg_red" />
 
                 <Button
-                    android:id="@+id/pegGuess4"
+                    android:id="@+id/pegGuess2"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/peg_purple" />
+                    android:background="@drawable/peg_blue" />
 
                 <Button
                     android:id="@+id/pegGuess3"
@@ -59,12 +51,21 @@
                     android:background="@drawable/peg_green" />
 
                 <Button
+                    android:id="@+id/pegGuess4"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/peg_purple" />
+
+                <Button
                     android:id="@+id/pegGuess5"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/peg_orange" />
+
             </LinearLayout>
 
 

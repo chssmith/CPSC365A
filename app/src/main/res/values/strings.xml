@@ -2,4 +2,5 @@
     <string name="app_name">Stats on Stats</string>
     <string name="USER_SETTINGS">USER_SETTINGS</string>
     <string name="USER_NICKNAME">USER_NICKNAME</string>
+    <string name="title_activity_master_mind">MasterMindActivity</string>
 </resources>

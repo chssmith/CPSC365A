@@ -1,5 +1,6 @@
 package edu.roanoke.cs.cpsc365a;
 
+import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,7 +32,7 @@ public class MasterMindActivity extends AppCompatActivity {
     private static final int NUM_COLORS = 6;        // number of possible colors.
     private static final int PEGS_IN_GUESS = 4;     // number of pegs in a guess.
     private static final int CORRECT_PEG = 2;       // id given to a correct peg placement.
-    private static final int SECONDS_TO_PLAY = 120; // total time to complete task (in seconds).
+    private static final int SECONDS_TO_PLAY = 90;  // total time to complete task (in seconds).
     private static final int DOUBLE_DIGIT_SEC = 10; // holds the threshold to add a leading zero.
     private static final int MILLIS_IN_SEC = 1000;
     private static final int MILLIS_IN_MIN = 60000;
@@ -124,7 +125,7 @@ public class MasterMindActivity extends AppCompatActivity {
                 // ASSERT: The timer has hit 0. The game has ended in failure.
                 countDownText.setText("0:00");
                 elapsedTime++;
-                endTask ();
+                SaveData(0); // send a 0 to the database signaling an unsuccessful game.
             }
         };
 
@@ -154,10 +155,6 @@ public class MasterMindActivity extends AppCompatActivity {
             possibleColors.remove(randomIndex);
             colorsRemaining--;
         }
-
-        // debug info: shows the generated answer in the android monitor.
-        Log.d("MasterMindActivity", "generateAnswer: answer = [" + answer[0] +
-                answer[1] + answer[2] + answer[3] + "]");
     }
 
 
@@ -219,7 +216,7 @@ public class MasterMindActivity extends AppCompatActivity {
             // cancel timer.
             timer.cancel();
             // upload data to the database.
-            endTask();
+            SaveData(1); // send a 1 to the database signaling a successful game.
         }
     }
 
@@ -249,22 +246,19 @@ public class MasterMindActivity extends AppCompatActivity {
 
 
     //------------------------------------------
-    // Database Interaction Functions
+    // Database Interaction
     //------------------------------------------
 
     // PRE:  This task has ended by a successful guess or the timer has reached 0.
-    //       successfulGuess, timeRemaining are defined.
+    //       successfulGuess is defined as 0 or 1.
     // POST: This task's data has been stored in the Stats on Stats database.
-    private void endTask () {
-        // data available: boolean successfulGuess
-        //                 int     totalGuesses
-        //                 int     elapsedTime
+    private void SaveData (int data) {
 
     }
 
 
     //------------------------------------------
-    // On Click Listeners
+    // On Click Listenersa
     //------------------------------------------
 
     // PRE:  Handles a click on the Guess button (a guess attempt).
@@ -278,7 +272,7 @@ public class MasterMindActivity extends AppCompatActivity {
 
             if (validGuess) {
                 // ASSERT: All pegs are filled.
-                // check guess correctness and, if incorrect, give hint.
+                // check guess correctness and give hint.
                 evaluateGuess();
                 // ASSERT: successfulGuess = true if the guess was correct, false otherwise.
 
