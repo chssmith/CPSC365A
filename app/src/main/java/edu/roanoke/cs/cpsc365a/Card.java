@@ -1,4 +1,4 @@
-package edu.roanoke.cs.cpsc365a.SetTask;
+package edu.roanoke.cs.cpsc365a;
 
 import java.util.Random;
 public class Card {
@@ -12,13 +12,20 @@ public class Card {
 
     public Card(){}
 
+    public Card(int Col, int Num, int Shp, int Shd){
+        color = Col;
+        number = Num;
+        shape = Shp;
+        shade = Shd;
+    }
+
 
     public Card(int Seed) {
         Random rand = new Random(Seed);
-        color = rand.nextInt(4);
-        number = rand.nextInt(4);
-        shape = rand.nextInt(4);
-        shade = rand.nextInt(4);
+        color = rand.nextInt(3);
+        number = rand.nextInt(3);
+        shape = rand.nextInt(3);
+        shade = rand.nextInt(3);
     }
 
     //Initializer

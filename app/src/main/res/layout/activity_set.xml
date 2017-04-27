@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_set"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="edu.roanoke.cs.cpsc365a.SetActivity">
+
+    <ImageButton
+        app:srcCompat="@drawable/onefilledgreentriangle"
+        android:id="@+id/Card1"
+        android:saveEnabled="false"
+        android:scaleType="centerInside"
+        android:layout_below="@+id/Card2"
+        android:layout_alignLeft="@+id/Card2"
+        android:layout_alignStart="@+id/Card2"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="20dp"
+        android:layout_x="0dp"
+        android:layout_y="0dp"
+        android:layout_width="100dp"
+        android:layout_height="75dp" />
+
+    <ImageButton
+        android:layout_height="75dp"
+        app:srcCompat="@drawable/onefilledredtriangle"
+        android:id="@+id/Card2"
+        android:scaleType="centerInside"
+        android:layout_above="@+id/MyText"
+        android:layout_marginBottom="265dp"
+        android:adjustViewBounds="true"
+        android:layout_x="110dp"
+        android:layout_y="0dp"
+        android:layout_width="100dp" />
+
+    <ImageButton
+        app:srcCompat="@drawable/oneshadedredtriangle"
+        android:id="@+id/Card4"
+        android:layout_alignTop="@+id/Card5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_x="0dp"
+        android:layout_y="100dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        android:layout_width="100dp"
+        android:layout_height="75dp" />
+
+    <ImageButton
+        app:srcCompat="@drawable/threeopenpurplesquiggle"
+        android:layout_marginTop="47dp"
+        android:id="@+id/Card7"
+        android:layout_below="@+id/Card4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_x="0dp"
+        android:layout_y="200dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        android:layout_width="100dp"
+        android:layout_height="75dp" />
+
+    <ImageButton
+        android:layout_height="75dp"
+        app:srcCompat="@drawable/oneshadedgreentriangle"
+        android:id="@+id/Card3"
+        android:layout_alignBottom="@+id/Card2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_x="220dp"
+        android:layout_y="0dp"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        android:layout_width="100dp" />
+
+    <ImageButton
+        app:srcCompat="@drawable/threefilledgreenoval"
+        android:id="@+id/Card5"
+        android:layout_marginTop="31dp"
+        android:layout_below="@+id/Card2"
+        android:layout_alignLeft="@+id/Card2"
+        android:layout_alignStart="@+id/Card2"
+        android:layout_x="110dp"
+        android:layout_y="100dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        android:layout_width="100dp"
+        android:layout_height="75dp" />
+
+    <ImageButton
+        app:srcCompat="@drawable/threefilledredoval"
+        android:id="@+id/Card6"
+        android:layout_alignTop="@+id/Card4"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_x="220dp"
+        android:layout_y="100dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        android:layout_width="100dp"
+        android:layout_height="75dp" />
+
+    <ImageButton
+        app:srcCompat="@drawable/threeshadedgreentriangle"
+        android:id="@+id/Card8"
+        android:layout_alignTop="@+id/Card7"
+        android:layout_alignLeft="@+id/Card5"
+        android:layout_alignStart="@+id/Card5"
+        android:layout_x="110dp"
+        android:layout_y="200dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        android:layout_width="100dp"
+        android:layout_height="75dp" />
+
+    <ImageButton
+        app:srcCompat="@drawable/twofilledgreensquiggle"
+        android:id="@+id/Card9"
+        android:layout_alignTop="@+id/Card8"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_x="220dp"
+        android:layout_y="200dp"
+        android:scaleType="centerInside"
+        android:layout_width="100dp"
+        android:layout_height="75dp" />
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="75dp"
+        app:srcCompat="@drawable/twofilledpurplesquiggle"
+        android:id="@+id/Card10"
+        android:layout_below="@+id/Card7"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="36dp"
+        android:layout_x="0dp"
+        android:layout_y="300dp"
+        android:baselineAlignBottom="true"
+        android:scaleType="centerInside" />
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="75dp"
+        app:srcCompat="@drawable/twoopenpurplesquiggle"
+        android:id="@+id/Card11"
+        android:layout_alignTop="@+id/Card10"
+        android:layout_alignLeft="@+id/Card8"
+        android:layout_alignStart="@+id/Card8"
+        android:layout_x="110dp"
+        android:layout_y="300dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside" />
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="75dp"
+        app:srcCompat="@drawable/twoshadedredtriangle"
+        android:layout_alignBottom="@+id/Card11"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/Card12"
+        android:layout_x="220dp"
+        android:layout_y="300dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside" />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:id="@+id/MyText"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+        android:fontFamily="monospace"
+        android:textStyle="normal|bold"
+        android:textAlignment="center"
+        android:textSize="36sp"
+        android:layout_marginBottom="121dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/Card1"
+        android:layout_alignStart="@+id/Card1"
+        android:layout_x="0dp"
+        android:layout_y="400dp"
+        android:layout_width="350dp" />
+
+</AbsoluteLayout>
