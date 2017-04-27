@@ -74,7 +74,7 @@ public class RoomActivity extends AppCompatActivity {
     //  Possible Errors:
     //  No internet connection, invalid room number, invalid room format.
     private void enterRoom(String room) {
-
+        System.out.println("WE ENTERED A ROOOOOOOOOOOOM");
         StatsAPIInterface apiService = StatsAPI.getClient().create(StatsAPIInterface.class);
         Call<RoomResponse> call = apiService.enterRoom(room);
         call.enqueue(new Callback<RoomResponse>() {

@@ -28,23 +28,22 @@ public class TextActivity extends AppCompatActivity {
         submitButton = (Button)findViewById(R.id.button);
         entry = (EditText)findViewById(R.id.editText2);
 
-        Button.OnClickListener(new View.OnClickListener() {
+        submitButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                int entry = entry.getText();
-                SaveData(entry);
-
+                float data = Float.parseFloat(entry.getText().toString());
+                SaveData(data);
             }
-        }
+        });
     }
 
-    public void SaveData(int MyData){
+    public void SaveData(float MyData){
         //Get user's preferences.
         SharedPreferences userPrefs = getSharedPreferences(Cons.USER_SETTINGS, MODE_PRIVATE);
         String id = userPrefs.getString(Cons.USER_ID, "");
         String room = userPrefs.getString(Cons.ROOM_ID, "");
 
         StatsAPIInterface apiService = StatsAPI.getClient().create(StatsAPIInterface.class);
-        Call<DataResponse> call = apiService.submitData(id, room, MyData);
+        Call<DataResponse> call = apiService.submitData(id, room, (float)MyData);
         call.enqueue(new Callback<DataResponse>() {
             @Override
             public void onResponse(Call<DataResponse>call, Response<DataResponse> response) {
