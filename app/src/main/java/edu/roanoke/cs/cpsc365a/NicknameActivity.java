@@ -26,6 +26,9 @@ public class NicknameActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Intent Set = new Intent (this, SetActivity.class);
+        startActivity(Set);
+        
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nickname);
     }
