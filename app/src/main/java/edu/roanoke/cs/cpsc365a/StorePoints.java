@@ -1,10 +1,8 @@
-package edu.roanoke.cs.cpsc365a.TracingTask;
+package edu.roanoke.cs.cpsc365a;
 
 import android.view.View;
 
 import java.util.ArrayList;
-
-import edu.roanoke.cs.cpsc365a.TracingTask.Point;
 
 /**
  * Created by gmgriswold on 3/22/17.

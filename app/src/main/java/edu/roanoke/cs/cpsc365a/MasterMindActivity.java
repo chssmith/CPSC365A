@@ -1,5 +1,6 @@
 package edu.roanoke.cs.cpsc365a;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -262,11 +263,12 @@ public class MasterMindActivity extends AppCompatActivity {
         String room = userPrefs.getString(Cons.ROOM_ID, "");
 
         StatsAPIInterface apiService = StatsAPI.getClient().create(StatsAPIInterface.class);
-        Call<DataResponse> call = apiService.submitData(id, room, data);
+        Call<DataResponse> call = apiService.submitData(id, room, (float)data);
         call.enqueue(new Callback<DataResponse>() {
             @Override
             public void onResponse(Call<DataResponse>call, Response<DataResponse> response) {
-                System.out.println("SUBMITTED!");
+                Intent i = new Intent(getBaseContext(), RoomActivity.class);
+                startActivity(i);
             }
 
             @Override

@@ -21,7 +21,7 @@ public interface StatsAPIInterface {
     Call<RoomResponse> enterRoom(@Path("code") String code);
 
     @GET("response/create")
-    Call<DataResponse> submitData(@Query("room_fkey") String username, @Query("user_fkey") String userType, @Body Integer data);
+    Call<DataResponse> submitData(@Query("room_fkey") String username, @Query("user_fkey") String userType, @Body float data);
 }
 
 

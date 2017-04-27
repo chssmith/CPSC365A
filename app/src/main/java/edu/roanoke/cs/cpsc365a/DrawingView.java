@@ -1,8 +1,7 @@
-package edu.roanoke.cs.cpsc365a.TracingTask;
+package edu.roanoke.cs.cpsc365a;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -11,13 +10,6 @@ import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-
-import edu.roanoke.cs.cpsc365a.Cons;
-import edu.roanoke.cs.cpsc365a.StatsAPI;
-import edu.roanoke.cs.cpsc365a.StatsAPIInterface;
-
-import static android.R.attr.data;
-import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by gmgriswold on 3/13/17.
@@ -312,29 +304,5 @@ public class DrawingView extends View {
         int finishtime = (int)finalDomTime;
         return (finishtime);
     }
-
-    //NEEDS THE RIGHT PACKAGE IMPORTED
-    public void saveDataInt(int time){
-        //Get user's preferences.
-        SharedPreferences userPrefs = getSharedPreferences(Cons.USER_SETTINGS, MODE_PRIVATE);
-        String id = userPrefs.getString(Cons.USER_ID, "");
-        String room = userPrefs.getString(Cons.ROOM_ID, "");
-
-        StatsAPIInterface apiService = StatsAPI.getClient().create(StatsAPIInterface.class);
-        Call<DataResponse> call = apiService.submitData(id, room, time);
-        call.enqueue(new Callback<DataResponse>() {
-            @Override
-            public void onResponse(Call<DataResponse>call, Response<DataResponse> response) {
-                System.out.println("SUBMITTED!");
-            }
-
-            @Override
-            public void onFailure(Call<DataResponse>call, Throwable t) {
-                // Log error here since request failed
-                System.out.println(t.toString());
-            }
-        });
-    }
-
 }
 

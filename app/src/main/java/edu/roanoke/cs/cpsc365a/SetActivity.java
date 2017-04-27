@@ -1,5 +1,6 @@
 package edu.roanoke.cs.cpsc365a;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -403,7 +404,8 @@ public class SetActivity extends AppCompatActivity {
         call.enqueue(new Callback<DataResponse>() {
             @Override
             public void onResponse(Call<DataResponse>call, Response<DataResponse> response) {
-                System.out.println("SUBMITTED!");
+                Intent i = new Intent(getBaseContext(), RoomActivity.class);
+                startActivity(i);
             }
 
             @Override
