@@ -1,9 +1,9 @@
 package edu.roanoke.cs.cpsc365a;
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.provider.ContactsContract;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -11,6 +11,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 //Key
 //Color: 1 - red, 2 - green, 3 - purple
@@ -388,7 +392,27 @@ public class SetActivity extends AppCompatActivity {
         }
     }
 
-    public void SaveData(int MyData){}
+    public void SaveData(int MyData){
+        //Get user's preferences.
+        SharedPreferences userPrefs = getSharedPreferences(Cons.USER_SETTINGS, MODE_PRIVATE);
+        String id = userPrefs.getString(Cons.USER_ID, "");
+        String room = userPrefs.getString(Cons.ROOM_ID, "");
+
+        StatsAPIInterface apiService = StatsAPI.getClient().create(StatsAPIInterface.class);
+        Call<DataResponse> call = apiService.submitData(id, room, MyData);
+        call.enqueue(new Callback<DataResponse>() {
+            @Override
+            public void onResponse(Call<DataResponse>call, Response<DataResponse> response) {
+                System.out.println("SUBMITTED!");
+            }
+
+            @Override
+            public void onFailure(Call<DataResponse>call, Throwable t) {
+                // Log error here since request failed
+                System.out.println(t.toString());
+            }
+        });
+    }
 
 }
 

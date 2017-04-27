@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 
 import edu.roanoke.cs.cpsc365a.R;
-import edu.roanoke.cs.cpsc365a.TracingTask.DrawingView;
 
 public class DrawViewActivity extends Activity {
     private DrawingView drawView;
@@ -21,8 +20,8 @@ public class DrawViewActivity extends Activity {
             public void onClick(View v) {
                 if(button.getText() == "Submit") {
                     if(drawView.store.ifFinished()) {
-                        //int finishTime = drawView.getNonDomFinishTime();
-                        //drawView.saveDataInt(finishTime);
+                        int finishTime = drawView.getNonDomFinishTime();
+                        drawView.saveDataInt(finishTime);
                         System.exit(0);
                     }
                 }

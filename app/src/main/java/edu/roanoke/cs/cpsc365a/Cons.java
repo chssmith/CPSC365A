@@ -16,6 +16,8 @@ public interface Cons {
 
     public static final String USER_ID = "USER_ID";
 
+    public static final String ROOM_ID = "ROOM_ID";
+
     //--------------------------------------------------
     //
     //  API endpoints

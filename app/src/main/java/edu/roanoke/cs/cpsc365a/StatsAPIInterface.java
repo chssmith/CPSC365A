@@ -37,28 +37,28 @@ class UserResponse {
 class RoomResponse {
 
     @SerializedName("ID")
-    private String ID;
+    public String ID;
 
     @SerializedName("room_code")
-    private String room;
+    public String room;
 
     @SerializedName("task_fkey")
-    private String task;
+    public String task;
 }
 
 class DataResponse {
 
     @SerializedName("user_fkey")
-    private String user;
+    public String user;
 
     @SerializedName("room_fkey")
-    private String room;
+    public String room;
 
     @SerializedName("task_fkey")
-    private String task;
+    public String task;
 
     @SerializedName("id")
-    private String ID;
+    public String ID;
 
     @SerializedName("Error")
     public String error;

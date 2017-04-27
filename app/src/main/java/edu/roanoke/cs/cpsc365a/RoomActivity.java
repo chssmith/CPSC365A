@@ -5,11 +5,18 @@
 
 package edu.roanoke.cs.cpsc365a;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+
+import edu.roanoke.cs.cpsc365a.TracingTask.DrawViewActivity;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RoomActivity extends AppCompatActivity {
 
@@ -48,8 +55,8 @@ public class RoomActivity extends AppCompatActivity {
     //  of an invalid format.
     public void handleEnter(View view) {
         String room =  ((EditText)findViewById(R.id.roomField)).getText().toString();
-        if (!room.isEmpty() && room.matches("[0-9]+")) {
-            enterRoom();
+        if (!room.isEmpty()) {
+            enterRoom(room);
         }
         else {
             informUser("Rooms are numberical");
@@ -67,18 +74,60 @@ public class RoomActivity extends AppCompatActivity {
     //
     //  Possible Errors:
     //  No internet connection, invalid room number, invalid room format.
-    private void enterRoom() {
-        System.out.println("ENTERING A ROOM!");
+    private void enterRoom(String room) {
 
-        /*
-        Make request to server, for the given room.
-          Get response.
-              If valid room.
-                  Get the task from the response.
-                  Present the task to the user, passing the room number along.
-              Else
-                  Inform user of the incorrect room.
-        */
+        StatsAPIInterface apiService = StatsAPI.getClient().create(StatsAPIInterface.class);
+        Call<RoomResponse> call = apiService.enterRoom(room);
+        call.enqueue(new Callback<RoomResponse>() {
+            @Override
+            public void onResponse(Call<RoomResponse>call, Response<RoomResponse> response) {
+
+                //Get user's preferences.
+                SharedPreferences userPrefs = getSharedPreferences(Cons.USER_SETTINGS, MODE_PRIVATE);
+
+                //Save and commit the user's nickname to the shared preferences.
+                SharedPreferences.Editor editor = userPrefs.edit();
+                editor.putString(Cons.ROOM_ID, response.body().room);
+                editor.commit();
+
+                String roomType = response.body().task;
+                if (roomType == "1") {
+                    System.out.println("TEXT ENTRY");
+                    //Intent i = new Intent(getBaseContext(), .class);
+                    //startActivity(i);
+                }
+                else if (roomType == "2") {
+                    System.out.println("SET");
+                    Intent i = new Intent(getBaseContext(), SetActivity.class);
+                    startActivity(i);
+                }
+                else if (roomType == "3") {
+                    System.out.println("TRACING");
+                    Intent i = new Intent(getBaseContext(), DrawViewActivity.class);
+                    startActivity(i);
+                }
+                else if (roomType == "4") {
+                    System.out.println("MASTERMIND");
+                    Intent i = new Intent(getBaseContext(), MasterMindActivity.class);
+                    startActivity(i);
+                }
+                else if (roomType == "5") {
+                    System.out.println("MATH");
+                    Intent i = new Intent(getBaseContext(), QuizActivity.class);
+                    startActivity(i);
+                }
+
+
+
+            }
+
+            @Override
+            public void onFailure(Call<RoomResponse>call, Throwable t) {
+                // Log error here since request failed
+                System.out.println(t.toString());
+            }
+        });
+
     }
 
     //  Description:
