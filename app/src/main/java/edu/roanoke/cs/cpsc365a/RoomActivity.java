@@ -1,3 +1,8 @@
+//  Connor Ricks
+//
+//  Please do not make changes to this activity, or its XML without consulting me on the reason why.
+//
+
 package edu.roanoke.cs.cpsc365a;
 
 import android.os.Bundle;
@@ -90,4 +95,3 @@ public class RoomActivity extends AppCompatActivity {
         alert.show();
     }
 }
-

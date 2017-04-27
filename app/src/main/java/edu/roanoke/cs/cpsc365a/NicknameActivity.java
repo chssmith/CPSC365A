@@ -1,3 +1,8 @@
+//  Connor Ricks
+//
+//  Please do not make changes to this activity, or its XML without consulting me on the reason why.
+//
+
 package edu.roanoke.cs.cpsc365a;
 
 import android.content.Intent;
@@ -7,6 +12,11 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class NicknameActivity extends AppCompatActivity {
 
@@ -28,6 +38,11 @@ public class NicknameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nickname);
+
+        SharedPreferences userPrefs = getSharedPreferences(Cons.USER_SETTINGS, MODE_PRIVATE);
+        if ((userPrefs.getString(Cons.USER_NICKNAME, "") != "") && (userPrefs.getString(Cons.USER_ID, "") != "")) {
+            proceedToRoomMenu();
+        }
     }
 
     //--------------------------------------------------
@@ -67,25 +82,34 @@ public class NicknameActivity extends AppCompatActivity {
     //
     //  Parameters:
     //  nickname is the user's nickname.
-    private void saveNickname(String nickname) {
+    private void saveNickname(final String nickname) {
 
-        /*
-        Make request to server, to add user and get UID.
-          Get response.
-              If success.
-                  Get the UID from the response.
-                  Save the user's nickname & UID to Shared Preferences
-              Else
-                  Inform user of the error.
-        */
+        StatsAPIInterface apiService = StatsAPI.getClient().create(StatsAPIInterface.class);
+        Call<UserResponse> call = apiService.createUser(nickname, "1");
+        call.enqueue(new Callback<UserResponse>() {
+            @Override
+            public void onResponse(Call<UserResponse>call, Response<UserResponse> response) {
 
-        //Get user's preferences.
-        SharedPreferences userPrefs = getSharedPreferences(getResources().getString(R.string.USER_SETTINGS), MODE_PRIVATE);
 
-        //Save and commit the user's nickname to the shared preferences.
-        SharedPreferences.Editor editor = userPrefs.edit();
-        editor.putString(getResources().getString(R.string.USER_NICKNAME), nickname);
-        editor.commit();
+                UserResponse r = response.body();
+                
+                //Get user's preferences.
+                SharedPreferences userPrefs = getSharedPreferences(Cons.USER_SETTINGS, MODE_PRIVATE);
+
+                //Save and commit the user's nickname to the shared preferences.
+                SharedPreferences.Editor editor = userPrefs.edit();
+                editor.putString(Cons.USER_NICKNAME, nickname);
+                editor.putString(Cons.USER_ID, r.ID);
+                editor.commit();
+
+            }
+
+            @Override
+            public void onFailure(Call<UserResponse>call, Throwable t) {
+                // Log error here since request failed
+                System.out.println(t.toString());
+            }
+        });
     }
 
     //  Description:
