@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="edu.roanoke.cs.cpsc365a">
-
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="edu.roanoke.cs.cpsc365a">
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,5 +16,4 @@
         </activity>
         <activity android:name=".RoomActivity"></activity>
     </application>
-
 </manifest>
