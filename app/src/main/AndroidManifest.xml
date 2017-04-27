@@ -15,6 +15,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".RoomActivity" />
+        <activity
+            android:name=".MasterMindActivity"
+            android:label="@string/title_activity_master_mind"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SetActivity"></activity>
     </application>
 </manifest>

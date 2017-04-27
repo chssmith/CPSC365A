@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_master_mind"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="?attr/colorButtonNormal"
+    android:orientation="vertical"
+    tools:context="edu.roanoke.cs.cpsc365a.MasterMindActivity">
+
+
+    <TableLayout
+        android:id="@+id/guess"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:stretchColumns="1">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:paddingTop="5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/pegGuess1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/peg_red" />
+
+                <Button
+                    android:id="@+id/pegGuess2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/peg_blue" />
+
+                <Button
+                    android:id="@+id/pegGuess3"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/peg_green" />
+
+                <Button
+                    android:id="@+id/pegGuess4"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/peg_purple" />
+
+                <Button
+                    android:id="@+id/pegGuess5"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/peg_orange" />
+
+            </LinearLayout>
+
+
+        </TableRow>
+
+        <Button
+            android:id="@+id/GuessButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:text="Guess" />
+    </TableLayout>
+
+    <ListView
+        android:id="@+id/guesses"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/guess"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="45dp"
+        android:background="@android:color/darker_gray"
+
+        android:stackFromBottom="true"
+        android:transcriptMode="alwaysScroll" />
+
+    <TableLayout
+        android:id="@+id/timer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:stretchColumns="2">
+
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/darker_gray">
+
+            <TextView
+                android:id="@+id/timerText"
+                android:layout_width="100dp"
+                android:background="@color/colorPrimaryDark"
+                android:fontFamily="sans-serif-condensed"
+                android:paddingBottom="5dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:text="2:00"
+                android:textColor="@android:color/background_light"
+                android:textSize="30sp" />
+
+            <TableLayout
+                android:id="@+id/hintInfo"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="right"
+                android:paddingBottom="6dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="6dp">
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:id="@+id/instructions"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="Correct color, incorrect position"
+                        android:textColor="@android:color/background_light" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:id="@+id/instructions2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="Correct color and position"
+                        android:textColor="@android:color/black" />
+
+                </TableRow>
+            </TableLayout>
+
+
+        </TableRow>
+    </TableLayout>
+
+
+</RelativeLayout>
