@@ -90,27 +90,27 @@ public class RoomActivity extends AppCompatActivity {
                 editor.commit();
 
                 String roomType = response.body().task;
-                if (roomType == "1") {
+                if (roomType.equals("1")) {
                     System.out.println("TEXT ENTRY");
-                    //Intent i = new Intent(getBaseContext(), .class);
-                    //startActivity(i);
+                    Intent i = new Intent(getBaseContext(), TextActivity.class);
+                    startActivity(i);
                 }
-                else if (roomType == "2") {
+                else if (roomType.equals("2")) {
                     System.out.println("SET");
                     Intent i = new Intent(getBaseContext(), SetActivity.class);
                     startActivity(i);
                 }
-                else if (roomType == "3") {
+                else if (roomType.equals("3")) {
                     System.out.println("TRACING");
                     Intent i = new Intent(getBaseContext(), DrawViewActivity.class);
                     startActivity(i);
                 }
-                else if (roomType == "4") {
+                else if (roomType.equals("4")) {
                     System.out.println("MASTERMIND");
                     Intent i = new Intent(getBaseContext(), MasterMindActivity.class);
                     startActivity(i);
                 }
-                else if (roomType == "5") {
+                else if (roomType.equals("5")) {
                     System.out.println("MATH");
                     Intent i = new Intent(getBaseContext(), QuizActivity.class);
                     startActivity(i);

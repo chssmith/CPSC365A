@@ -8,7 +8,7 @@
     tools:context=".DrawViewActivity" >
 
 
-    <com.example.gmgriswold.drawing.DrawingView
+    <edu.roanoke.cs.cpsc365a.DrawingView
         android:id="@+id/drawing"
         android:layout_width="fill_parent"
         android:layout_height="0dp"

@@ -57,7 +57,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         questioned = (TextView) findViewById(R.id.question);
         int curr_index = 0;
 
-
+        //error here
         questionNum.setText(curr_index + 1);
         questioned.setText(questions_list.get(curr_index).getQuestion());
 

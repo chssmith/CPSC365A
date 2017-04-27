@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -20,7 +21,7 @@ public interface StatsAPIInterface {
     @GET("room/show/{code}")
     Call<RoomResponse> enterRoom(@Path("code") String code);
 
-    @GET("response/create")
+    @POST("response/create")
     Call<DataResponse> submitData(@Query("room_fkey") String username, @Query("user_fkey") String userType, @Body float data);
 }
 

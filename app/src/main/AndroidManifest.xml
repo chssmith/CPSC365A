@@ -20,5 +20,9 @@
             android:label="@string/title_activity_master_mind"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SetActivity"></activity>
+        <activity android:name=".DrawViewActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".QuizActivity"></activity>
+        <activity android:name=".TextActivity"></activity>
     </application>
 </manifest>
