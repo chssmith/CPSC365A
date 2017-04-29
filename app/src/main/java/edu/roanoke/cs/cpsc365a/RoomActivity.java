@@ -86,7 +86,7 @@ public class RoomActivity extends AppCompatActivity {
 
                 //Save and commit the user's nickname to the shared preferences.
                 SharedPreferences.Editor editor = userPrefs.edit();
-                editor.putString(Cons.ROOM_ID, response.body().room);
+                editor.putString(Cons.ROOM_ID, response.body().ID);
                 editor.commit();
 
                 String roomType = response.body().task;
